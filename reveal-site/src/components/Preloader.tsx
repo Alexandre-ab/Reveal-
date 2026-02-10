@@ -2,14 +2,14 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 
 export default function Preloader() {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
-  const startTime = useRef(Date.now());
+  const startTime = useRef(0);
 
   useEffect(() => {
+    startTime.current = Date.now();
     const MAX_DURATION = 3000;
     let rafId: number;
     let done = false;
@@ -18,26 +18,21 @@ export default function Preloader() {
       if (done) return;
       done = true;
       setProgress(100);
-      setTimeout(() => setLoading(false), 200);
+      setTimeout(() => setLoading(false), 300);
     };
 
-    // Listen for real page load
     const onLoad = () => finish();
     if (document.readyState === "complete") {
-      // Already loaded — small delay to let animations play
-      setTimeout(finish, 800);
+      setTimeout(finish, 1000);
     } else {
       window.addEventListener("load", onLoad);
     }
 
-    // Fallback max timer
     const fallback = setTimeout(finish, MAX_DURATION);
 
-    // Animate progress bar based on elapsed time
     const tick = () => {
       if (done) return;
       const elapsed = Date.now() - startTime.current;
-      // Ease out: fast start, slow finish — caps at 90% until real load
       const raw = Math.min(elapsed / MAX_DURATION, 1);
       const eased = 1 - Math.pow(1 - raw, 3);
       setProgress(Math.min(eased * 90, 90));
@@ -68,52 +63,62 @@ export default function Preloader() {
       {loading && (
         <motion.div
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="fixed inset-0 z-[100] bg-background flex items-center justify-center"
           aria-live="polite"
           role="status"
         >
-          <div className="text-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              className="flex justify-center mb-6"
+          <div className="text-center relative">
+            {/* REVEAL title - Bebas Neue ultra bold */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="font-display text-7xl md:text-9xl tracking-[0.15em] uppercase font-normal text-foreground mb-4"
             >
-              <div className="relative h-8 sm:h-10 md:h-14 w-40 sm:w-48 md:w-64">
-                <Image
-                  src="/logo.jpg"
-                  alt="REVEAL"
-                  fill
-                  className="object-contain invert"
-                  priority
-                />
-              </div>
-            </motion.div>
+              REVEAL
+            </motion.h1>
 
+            {/* Horizontal lines */}
             <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: "60px" }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="h-[1px] bg-accent mx-auto mb-4"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="w-32 h-[2px] bg-foreground mx-auto mb-6 origin-center"
             />
 
+            {/* Subtitle */}
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.6 }}
-              className="text-muted text-xs uppercase tracking-[0.4em]"
+              transition={{ delay: 1, duration: 0.6 }}
+              className="text-foreground/60 text-[10px] uppercase tracking-[0.5em] font-mono font-light"
             >
-              Reveal yourself
+              Barbershop
             </motion.p>
 
-            {/* Loading bar — synced with real progress */}
-            <motion.div className="mt-8 w-32 h-[1px] bg-border mx-auto overflow-hidden">
+            {/* Progress bar */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+              className="mt-12 w-40 h-[1px] bg-foreground/20 mx-auto overflow-hidden relative"
+            >
               <motion.div
                 style={{ width: `${progress}%` }}
-                className="h-full bg-accent transition-[width] duration-200 ease-out"
+                className="h-full bg-foreground transition-[width] duration-200 ease-out"
               />
             </motion.div>
+
+            {/* Progress percentage */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2 }}
+              className="mt-3 text-[9px] text-foreground/40 font-mono tracking-widest"
+            >
+              {Math.round(progress)}%
+            </motion.p>
           </div>
         </motion.div>
       )}

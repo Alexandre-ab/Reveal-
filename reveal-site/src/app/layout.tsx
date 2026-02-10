@@ -1,22 +1,31 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Bebas_Neue, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const bebas = Bebas_Neue({
+  variable: "--font-bebas",
   subsets: ["latin"],
+  weight: ["400"],
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const ibm = IBM_Plex_Mono({
+  variable: "--font-ibm",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
   title: "REVEAL | Barbershop",
   description:
-    "REVEAL — L'art du grooming moderne. Un salon de coiffure premium pour hommes. Réservez votre expérience.",
-  keywords: ["barbershop", "coiffeur", "barber", "grooming", "REVEAL", "Bourgoin-Jallieu"],
+    "REVEAL — L'art du grooming moderne. Un salon de coiffure premium pour hommes à Bourgoin-Jallieu. Réservez votre expérience.",
+  keywords: [
+    "barbershop",
+    "coiffeur",
+    "barber",
+    "grooming",
+    "REVEAL",
+    "Bourgoin-Jallieu",
+  ],
   openGraph: {
     title: "REVEAL | Barbershop",
     description:
@@ -40,7 +49,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" suppressHydrationWarning>
-      <body className={`${inter.variable} ${playfair.variable} antialiased`}>
+      <body className={`${bebas.variable} ${ibm.variable} antialiased`}>
         {children}
       </body>
     </html>

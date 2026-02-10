@@ -1,16 +1,17 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #080808;
-  --color-foreground: #f5f0eb;
-  --color-surface: #0f0f0f;
-  --color-surface-hover: #181818;
-  --color-accent: #c8b9a6;
-  --color-accent-hover: #d9ccbb;
-  --color-muted: #a8a8a8;
-  --color-border: #1e1e1e;
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-playfair);
+  --color-background: #000000;
+  --color-foreground: #FFFFFF;
+  --color-surface: #0A0A0A;
+  --color-surface-hover: #141414;
+  --color-accent: #FFFFFF;
+  --color-accent-hover: #CCCCCC;
+  --color-muted: #666666;
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-border-thick: rgba(255, 255, 255, 0.25);
+  --font-sans: var(--font-ibm);
+  --font-display: var(--font-bebas);
 }
 
 html {
@@ -20,19 +21,59 @@ html {
 body {
   background: var(--color-background);
   color: var(--color-foreground);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-sans), monospace;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Selection */
+/* Subtle scanline effect */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.01) 0px,
+    transparent 1px,
+    transparent 2px,
+    rgba(255, 255, 255, 0.01) 3px
+  );
+  animation: scanlines 8s linear infinite;
+}
+
+@keyframes scanlines {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(4px);
+  }
+}
+
+/* Noise grain */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Pure white selection */
 ::selection {
-  background: var(--color-accent);
+  background: var(--color-foreground);
   color: var(--color-background);
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -40,17 +81,17 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-muted);
+  background: rgba(255, 255, 255, 0.5);
 }
 
 /* Focus visible for accessibility */
 *:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-foreground);
   outline-offset: 2px;
 }
 
@@ -67,9 +108,39 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+
+  body::before {
+    animation: none;
+  }
 }
 
 /* Smooth image loading */
 img {
   transition: opacity 0.3s ease;
+}
+
+/* Glitch text effect utility */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.glitch-hover:hover {
+  animation: glitch 0.3s;
 }
