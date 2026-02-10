@@ -22,13 +22,13 @@ const salons = [
   },
   {
     id: 2,
-    name: "REVEAL LYON",
-    address: "45 Rue de la Liberté",
-    city: "69003 Lyon",
-    phone: "+33 4 78 XX XX XX",
+    name: "REVEAL Verpillière",
+    address: "53 Rue des Alpes",
+    city: "38290 La Verpillière",
+    phone: "0983282834",
     hours: "Mar-Sam 9h-19h",
     image: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1200&q=80",
-    bookingUrl: "https://www.planity.com/the-korner-barber-38300-bourgoin-jallieu",
+    bookingUrl: "https://www.planity.com/ed-barber-38290-la-verpilliere",
     gallery: [
       "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=600&q=80",

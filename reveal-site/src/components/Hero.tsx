@@ -52,7 +52,7 @@ export default function Hero() {
           animate="visible"
           className="uppercase tracking-[0.6em] text-[9px] text-foreground/50 mb-8 font-mono font-light"
         >
-          Barbershop · Bourgoin-Jallieu
+          Bourgoin-Jallieu · La Verpillière
         </motion.p>
 
         <div className="overflow-hidden mb-8">
