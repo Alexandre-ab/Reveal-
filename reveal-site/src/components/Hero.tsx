@@ -92,20 +92,36 @@ export default function Hero() {
           L&apos;art de se révéler
         </motion.p>
 
-        <motion.a
-          href="https://www.planity.com/the-korner-barber-38300-bourgoin-jallieu"
-          target="_blank"
-          rel="noopener noreferrer"
+        <motion.div
           custom={2.6}
           variants={fadeUpVariants}
           initial="hidden"
           animate="visible"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="inline-flex items-center px-12 py-4 border-2 border-foreground text-foreground uppercase tracking-[0.25em] text-[10px] font-mono font-bold hover:bg-foreground hover:text-background transition-all duration-300"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3"
         >
-          Réserver
-        </motion.a>
+          <motion.a
+            href="https://www.planity.com/the-korner-barber-38300-bourgoin-jallieu"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor="Réserver"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex flex-col items-center px-10 py-4 border-2 border-foreground text-foreground uppercase font-mono font-bold hover:bg-foreground hover:text-background transition-all duration-300"
+          >
+            <span className="tracking-[0.25em] text-[10px]">Bourgoin</span>
+          </motion.a>
+          <motion.a
+            href="https://www.planity.com/ed-barber-38290-la-verpilliere"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor="Réserver"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex flex-col items-center px-10 py-4 border-2 border-foreground text-foreground uppercase font-mono font-bold hover:bg-foreground hover:text-background transition-all duration-300"
+          >
+            <span className="tracking-[0.25em] text-[10px]">Verpillière</span>
+          </motion.a>
+        </motion.div>
       </div>
 
       <motion.div

@@ -15,9 +15,9 @@ const ibm = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "REVEAL | Barbershop",
+  title: "REVEAL | Barbershop — Bourgoin-Jallieu & La Verpillière",
   description:
-    "REVEAL — L'art du grooming moderne. Un salon de coiffure premium pour hommes à Bourgoin-Jallieu. Réservez votre expérience.",
+    "REVEAL — L'art du grooming moderne. Salons de coiffure premium pour hommes à Bourgoin-Jallieu et La Verpillière. Réservez votre expérience.",
   keywords: [
     "barbershop",
     "coiffeur",
@@ -25,20 +25,23 @@ export const metadata: Metadata = {
     "grooming",
     "REVEAL",
     "Bourgoin-Jallieu",
+    "La Verpillière",
+    "salon homme",
+    "barbier",
   ],
   openGraph: {
-    title: "REVEAL | Barbershop",
+    title: "REVEAL | Barbershop — Bourgoin-Jallieu & La Verpillière",
     description:
-      "Un lieu. Un style. Une expérience. L'art du grooming moderne au masculin.",
+      "Deux salons. Un style. Une expérience. L'art du grooming moderne au masculin.",
     type: "website",
     locale: "fr_FR",
     siteName: "REVEAL Barbershop",
   },
   twitter: {
     card: "summary_large_image",
-    title: "REVEAL | Barbershop",
+    title: "REVEAL | Barbershop — Bourgoin-Jallieu & La Verpillière",
     description:
-      "Un lieu. Un style. Une expérience. L'art du grooming moderne au masculin.",
+      "Deux salons. Un style. Une expérience. L'art du grooming moderne au masculin.",
   },
 };
 

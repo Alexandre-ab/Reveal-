@@ -9,19 +9,26 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
 import ScrollToTop from "@/components/ScrollToTop";
+import SmoothScroll from "@/components/SmoothScroll";
+import CustomCursor from "@/components/CustomCursor";
+import Marquee from "@/components/Marquee";
 
 export default function Home() {
   return (
     <>
+      <SmoothScroll />
+      <CustomCursor />
       <Preloader />
       <Header />
       <ScrollToTop />
       <main>
         <Hero />
         <About />
+        <Marquee />
         <Services />
         <Team />
         <Gallery />
+        <Marquee direction="right" />
         <Testimonials />
         <Contact />
       </main>

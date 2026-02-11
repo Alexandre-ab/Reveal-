@@ -8,7 +8,7 @@ const navLinks = [
   { label: "Le Salon", href: "#salon" },
   { label: "Services", href: "#services" },
   { label: "L'Équipe", href: "#equipe" },
-  { label: "Nos Salons", href: "#galerie" },
+  { label: "Nos Salons", href: "#nos-salons" },
   { label: "Contact", href: "#contact" },
 ];
 

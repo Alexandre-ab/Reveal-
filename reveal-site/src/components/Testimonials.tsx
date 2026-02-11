@@ -65,13 +65,13 @@ export default function Testimonials() {
             </div>
 
             <div className="flex items-center justify-center gap-8 mt-12">
-              <button onClick={prev} className="p-2 text-foreground/15 hover:text-foreground/60 transition-colors duration-300" aria-label="Précédent"><ChevronLeft size={18} /></button>
+              <button onClick={prev} className="p-2 text-foreground/30 hover:text-foreground/60 transition-colors duration-300" aria-label="Précédent"><ChevronLeft size={18} /></button>
               <div className="flex gap-3">
                 {testimonials.map((_, i) => (
                   <button key={i} onClick={() => setCurrent(i)} className={`h-[2px] transition-all duration-500 ${i === current ? "bg-foreground w-8" : "bg-foreground/20 w-4 hover:bg-foreground/40"}`} aria-label={`Avis ${i + 1}`} />
                 ))}
               </div>
-              <button onClick={next} className="p-2 text-foreground/15 hover:text-foreground/60 transition-colors duration-300" aria-label="Suivant"><ChevronRight size={18} /></button>
+              <button onClick={next} className="p-2 text-foreground/30 hover:text-foreground/60 transition-colors duration-300" aria-label="Suivant"><ChevronRight size={18} /></button>
             </div>
           </div>
         </AnimatedSection>

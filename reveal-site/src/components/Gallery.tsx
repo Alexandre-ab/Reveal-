@@ -22,7 +22,7 @@ const salons = [
   },
   {
     id: 2,
-    name: "REVEAL Verpillière",
+    name: "REVEAL VERPILLIÈRE",
     address: "53 Rue des Alpes",
     city: "38290 La Verpillière",
     phone: "0983282834",
@@ -38,7 +38,7 @@ const salons = [
 
 export default function Gallery() {
   return (
-    <section id="galerie" className="scroll-mt-20 py-32 md:py-44 border-t-2 border-foreground/20 relative">
+    <section id="nos-salons" className="scroll-mt-20 py-32 md:py-44 border-t-2 border-foreground/20 relative">
       <p className="font-display text-[10rem] md:text-[15rem] font-normal text-foreground/[0.03] absolute top-16 right-8 md:right-16 leading-none pointer-events-none select-none">04</p>
 
       <div className="max-w-7xl mx-auto px-6 relative">
@@ -118,9 +118,10 @@ export default function Gallery() {
                       viewport={{ once: true }}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
+                      data-cursor="Réserver"
                       className="inline-flex items-center px-8 py-3 border-2 border-foreground text-foreground text-[10px] uppercase tracking-[0.25em] font-mono font-bold hover:bg-foreground hover:text-background transition-all duration-300"
                     >
-                      Réserver ce salon
+                      Réserver
                     </motion.a>
                   </div>
                 </div>
@@ -134,6 +135,7 @@ export default function Gallery() {
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.8, delay: 0.2 }}
                       viewport={{ once: true }}
+                      data-cursor="Voir"
                       className="relative h-[400px] md:h-[500px] overflow-hidden border-2 border-foreground/10 group"
                     >
                       <Image

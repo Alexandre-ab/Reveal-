@@ -14,9 +14,7 @@
   --font-display: var(--font-bebas);
 }
 
-html {
-  scroll-behavior: smooth;
-}
+/* Lenis handles smooth scrolling — no native scroll-behavior needed */
 
 body {
   background: var(--color-background);

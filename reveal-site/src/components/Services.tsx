@@ -41,7 +41,7 @@ export default function Services() {
                     <span className="font-display text-xl md:text-2xl text-foreground/40 group-hover:text-foreground transition-colors duration-300">{service.price}</span>
                   </div>
                 </div>
-                <p className="text-foreground/25 text-xs leading-relaxed group-hover:text-foreground/50 transition-colors duration-300 pl-4 md:pl-6 max-w-md font-mono">{service.description}</p>
+                <p className="text-foreground/40 text-xs leading-relaxed group-hover:text-foreground/50 transition-colors duration-300 pl-4 md:pl-6 max-w-md font-mono">{service.description}</p>
               </motion.div>
             </AnimatedSection>
           ))}
